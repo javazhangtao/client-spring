@@ -1,0 +1,32 @@
+group 'com.rpc'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+sourceCompatibility = 1.7
+repositories {
+    maven {
+        url "http://repo1.maven.org/maven2"
+    }
+}
+
+dependencies {
+    compile 'com.google.code.gson:gson:2.5'
+    compile 'com.google.guava:guava:18.0'
+    compile 'io.netty:netty-all:5.0.0.Alpha2'
+    compile 'org.objenesis:objenesis:2.2'
+    compile 'com.dyuproject.protostuff:protostuff-api:1.0.9'
+    compile 'com.dyuproject.protostuff:protostuff-core:1.0.9'
+    compile 'com.dyuproject.protostuff:protostuff-runtime:1.0.9'
+    compile 'com.dyuproject.protostuff:protostuff-collectionschema:1.0.9'
+    compile 'org.apache.commons:commons-pool2:2.4.2'
+    compile 'org.ow2.asm:asm:5.0.3'
+    compile 'cglib:cglib:3.2.0'
+    compile 'log4j:log4j:1.2.17'
+    compile 'org.springframework:spring-core:4.2.0.RELEASE'
+    compile 'org.springframework:spring-context:4.2.0.RELEASE'
+    testCompile 'junit:junit:4.+'
+}
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
