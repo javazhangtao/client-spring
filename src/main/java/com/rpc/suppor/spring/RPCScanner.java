@@ -1,6 +1,6 @@
 package com.rpc.suppor.spring;
 
-import com.rpc.suppor.transform.InterfaceProxy;
+import com.rpc.suppor.transform.CGLIBProxyFactory;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
@@ -69,10 +69,8 @@ public final class RPCScanner extends ClassPathBeanDefinitionScanner {
                 for (BeanDefinitionHolder holder:beanDefinitions){
                     GenericBeanDefinition definition=(GenericBeanDefinition)holder.getBeanDefinition();//获取spring实例对象bean
                     definition.setScope("prototype");//设置spring管理bean为多例
-                    InterfaceProxy proxy=new InterfaceProxy();
-                    Object obj=proxy.create(Class.forName(definition.getBeanClassName()));
-                    definition.setBeanClass(obj.getClass());
-                    System.out.println();
+                    definition.getPropertyValues().add("sourceInterface", definition.getBeanClassName());
+                    definition.setBeanClass(CGLIBProxyFactory.class);
                 }
             } catch (Exception e) {
                 logger.error(e);
