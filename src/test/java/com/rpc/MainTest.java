@@ -44,7 +44,7 @@ public class MainTest {
             byte[] code=cw.toByteArray();
             ClientLoader loader=new ClientLoader();
             Class clazz=loader.defineClassByName("com.server.impl.UserServerImpl",code,0,code.length);
-            UserServer server=(UserServer)clazz.getConstructor(null).newInstance(null);
+            UserServer server=(UserServer)clazz.getConstructor().newInstance();
             System.out.println();
 //            ClassReader reader=new ClassReader("com.server.impl.UserServerImpl");
 //            byte[] code=reader.b;
